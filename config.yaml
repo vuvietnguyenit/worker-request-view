@@ -1,0 +1,12 @@
+api:
+  view_user: http://api-login.local/user
+
+config:
+  interval:
+    - 3
+    - 4
+    - 5
+    - 2
+    - 3
+    - 3
+    - 1
