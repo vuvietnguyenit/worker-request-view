@@ -11,11 +11,14 @@ import (
 
 func viewUser(userID string) {
 
-	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s/%s", configData.Api.ViewUser, userID), nil)
+	req, err := http.NewRequest(http.MethodGet, configData.Api.ViewUser, nil)
 	if err != nil {
 		log.Printf("client: could not create request: %s\n", err)
 		return
 	}
+	q := req.URL.Query()
+	q.Add("user_id", userID)
+	req.URL.RawQuery = q.Encode()
 	client := http.Client{
 		Timeout: 30 * time.Second,
 	}
